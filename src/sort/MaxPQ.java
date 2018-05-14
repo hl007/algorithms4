@@ -2,22 +2,33 @@ package sort;
 
 public class MaxPQ<Key extends Comparable<Key>> {
 
-    private Key[] pq;
-    private int N=0;
+    private Key[] pq;//存储堆的数组
+    private int N=0;//堆大小
 
     public MaxPQ(int maxN){
-        pq=(Key[]) new Comparable[maxN+1];
+        pq=(Key[]) new Comparable[maxN+1];//数组大小
     }
 
     public boolean isEmpty(){
         return N==0;
-    }
+    }//判断堆是否为空
 
     public int size(){
         return N;
+    }//返回堆的大小
+
+    public void insert(Key v){//插入元素
+        pq[++N]=v;
+        swim(N);//元素上浮
     }
 
-
+    public Key delMax(){//删除最大元素
+        Key max=pq[1];
+        exch(1,N--);//将堆中最后一个元素与顶端元素互换
+        pq[N+1]=null;//防止对象游离
+        sink(1);//元素下沉
+        return max;
+    }
 
     private boolean less(int i,int j){
         return pq[i].compareTo(pq[j])<0;
