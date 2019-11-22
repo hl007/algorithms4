@@ -11,9 +11,10 @@ public class Insertion {
     public static void sort(Comparable[] a){//插入排序
         int N=a.length;
         for(int i=1;i<N;i++){
-            for(int j=i;j>0 && less(a[j],a[j-1]);j--) {
+            for(int j=i;j>0 && less(a[j],a[j-1]);j--) { // 将元素插入合适的位置
                 exch(a,j,j-1);
             }
+
         }
     }
 

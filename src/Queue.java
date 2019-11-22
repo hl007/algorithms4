@@ -2,8 +2,8 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Queue<Item> {
-    private Node first; //指向最早添加的结点的链接,队头
-    private Node last; //指向最近添加的结点的链接，队尾
+    private Node first; //指向最早添加的结点的链接,队头（表尾）
+    private Node last; //指向最近添加的结点的链接，队尾（表头）
     private int N;
     private class Node{
         Item item;
@@ -16,7 +16,6 @@ public class Queue<Item> {
         return N;
     }
     public void enqueue(Item item){
-        //向表尾添加元素
         Node oldlast=last;
         last=new Node();
         last.item=item;

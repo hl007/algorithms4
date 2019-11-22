@@ -1,10 +1,15 @@
 import java.util.Iterator;
 
-public class FixedCapacityStack<Item> implements Iterable<Item>{
+public class ResizingArrayStack<Item> implements Iterable<Item>{
     //java禁止泛型数组
-    private Item[] a=(Item[]) new Object[1];
+    private Item[] a;
     //栈中元素数量
     private int N=0;
+
+    public ResizingArrayStack(int cap){
+        a=(Item[]) new Object[cap];
+    }
+
     public boolean isEmpty(){
         return N==0;
     }
