@@ -32,14 +32,12 @@ public class Queue<Item> {
         N--;
         return item;
     }
-    public static void main(String[] args){
-        Queue<String> q=new Queue<>();
-        while (!StdIn.isEmpty()){
-            String item=StdIn.readString();
-            if(!item.equals("-"))
-                q.enqueue(item);
-            else if(!q.isEmpty()) StdOut.print(q.dequeue()+" ");
-        }
-        StdOut.println("("+q.size()+" left on queue)");
+    public static void main(String[] args) {
+        Queue<String> q = new Queue<>();
+        q.enqueue("d");
+        q.enqueue("c");
+        q.enqueue("a");
+        if (!q.isEmpty()) System.out.println(q.dequeue() + " ");
     }
+
 }

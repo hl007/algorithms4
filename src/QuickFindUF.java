@@ -19,7 +19,7 @@ public class QuickFindUF {
     }//判断p,q是否相连
     public int find(int p){
         return id[p];
-    }//quikc-find算法，返回p所在分量的标识符
+    }//quick-find算法，返回p所在分量的标识符
     public void union(int p,int q){//在p,q之间添加一条连接，合并p,q所在的两个分量
         int pID=find(p);
         int qID=find(q);

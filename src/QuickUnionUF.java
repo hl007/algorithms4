@@ -37,15 +37,15 @@ public class QuickUnionUF {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner s = new Scanner(new File("F:\\algorithms4\\algs4-data\\algs4-data\\tinyUF.txt"));
+        Scanner s = new Scanner(new File("F:\\web开发\\算法\\算法4\\algorithms4-study\\algs4-data\\tinyUF.txt"));
         int N= Integer.parseInt(s.next());
         QuickUnionUF uf=new QuickUnionUF(N);
         while (s.hasNext()){
             int p=Integer.parseInt(s.next());
             int q=Integer.parseInt(s.next());
+            System.out.println(p+" "+q);
             if(uf.connected(p,q)) continue;
             uf.union(p,q);
-            System.out.println(p+" "+q);
         }
 
         System.out.println(uf.count()+"components");
