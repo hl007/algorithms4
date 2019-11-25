@@ -18,9 +18,7 @@ public class MergeBU {
                 merge(a,lo,lo+sz-1,Math.min(lo+sz+sz-1,N-1));
             }
         }
-
     }
-
 
     public static void merge(Comparable[] a,int lo,int mid,int hi){//合并两个有序数组为一个有序数组
         int i=lo,j=mid+1;

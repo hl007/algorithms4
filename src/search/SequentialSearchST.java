@@ -8,7 +8,7 @@ public class SequentialSearchST<Key,Value> implements DisorderedSymbolTable<Key,
     private Node first;  //  链表
 
     /**
-     *  无序链表，一个节点存储一个键值对和下一个结点的引用
+     *  无序链表，一个结点存储一个键值对和下一个结点的引用
      *
      */
     private class Node {
@@ -72,7 +72,6 @@ public class SequentialSearchST<Key,Value> implements DisorderedSymbolTable<Key,
         }
 
         x.next=delete(x.next,key);  // 如果未命中, 则从下一个节点继续执行删除操作
-
         return x;
     }
 

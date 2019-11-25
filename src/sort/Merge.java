@@ -25,21 +25,23 @@ public class Merge {
         }
     }
 
-    public static void merge(Comparable[] a,int lo,int mid,int hi){//合并两个有序数组为一个有序数组
-        int i=lo,j=mid+1;
 
-        for(int k=lo;k<=hi;k++){
+    // 合并两个有序数组为一个有序数组；对于较小的数组排序可使用插入排序
+    public static void merge(Comparable[] a,int lo,int mid,int hi){
+        int i=lo,j=mid+1;  // i,j分别为两个数组的索引，合并时向右移动，获取两个元素中较小的元素
+
+        for(int k=lo;k<=hi;k++){  // 数组元素复制
             aux[k]=a[k];
         }
 
         for(int k=lo;k<=hi;k++){
-            if(i>mid){
+            if(i>mid){  // 左半边的数组取完
                 a[k]=aux[j++];
             }
-            else if(j>hi){
+            else if(j>hi){  // 右半边的数组取完
                 a[k]=aux[i++];
             }
-            else if(less(aux[j],aux[i])){
+            else if(less(aux[j],aux[i])){  // 取两个子数组中较小的元素
                 a[k]=aux[j++];
             }
             else {
