@@ -104,6 +104,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> implements OrderedSy
         else x.val=val;
 
         if (isRed(x.left) && isRed(x.right))         flipColors(x);  // 左右链接均为红链接（4-结点转成2-结点）
+        // 以下两种情况可依次触发
         if (!isRed(x.left) && isRed(x.right))        x=rotateLeft(x);  // 左链接为黑链接，右链接为红链接（3-结点左旋转）
         if (isRed(x.left) && isRed(x.left.left))     x=rotateRight(x);  // 左链接和左结点的左链接均为红链接（4-结点右旋转为另一个4-结点）
 

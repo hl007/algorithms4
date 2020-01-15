@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.Queue;
 import java.util.NoSuchElementException;
 
 
-// 二叉查找树，每个结点含有一个键值对，一个左子结点，一个右子结点，一个结点计数器
+// 二叉查找树，每个结点含有一个键值对，一个左子结点的引用，一个右子结点的引用，一个结点计数器
 // 每个结点的键大于左子树的所有结点而小于右子树的所有结点
 public class BST<Key extends Comparable<Key>,Value> implements OrderedSymbolTable<Key,Value> {
     private Node root;
@@ -33,7 +33,7 @@ public class BST<Key extends Comparable<Key>,Value> implements OrderedSymbolTabl
 
     private Value get(Node x,Key key) {
         if (key == null) throw new IllegalArgumentException("key不能为空");
-        if (x==null) return null;
+        if (x==null) return null;  // 未命中
 
         int cmp=key.compareTo(x.key);
         if (cmp<0) return get(x.left,key);
@@ -196,7 +196,7 @@ public class BST<Key extends Comparable<Key>,Value> implements OrderedSymbolTabl
         root=deleteMin(root);
     }
 
-    private Node deleteMin(Node x) {  // 不断深入该节点的左子树，直至遇到一个结点的左子树是空链接（返回这个结点的右链接）
+    private Node deleteMin(Node x) {  // 不断深入该结点的左子树，直至遇到一个结点的左子树是空链接（返回这个结点的右链接）
         if (x.left==null) return x.right;
 
         x.left=deleteMin(x.left);
@@ -213,7 +213,7 @@ public class BST<Key extends Comparable<Key>,Value> implements OrderedSymbolTabl
     private Node deleteMax(Node x) {
         if (x.right==null) return x.left;
 
-        x.right=deleteMin(x.right);
+        x.right=deleteMax(x.right);
         x.size=size(x.left)+size(x.right)+1;
         return x;
     }
@@ -239,7 +239,7 @@ public class BST<Key extends Comparable<Key>,Value> implements OrderedSymbolTabl
             Node temp=x;
             x=min(temp.right);  // 用删除结点的右子树的最小结点代替删除结点，作为新结点
             x.left=temp.left;   // 新结点的左子结点指向删除结点的左子树
-            x.right=deleteMin(temp.right);  // 新节点的右子结点指向删除了最小值的右子树
+            x.right=deleteMin(temp.right);  // 新结点的右子结点指向删除了最小值的右子树
         }
 
         x.size=size(x.left)+size(x.right)+1;

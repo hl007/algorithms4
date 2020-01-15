@@ -58,7 +58,6 @@ public class SequentialSearchST<Key,Value> implements DisorderedSymbolTable<Key,
     @Override
     public void delete(Key key) {
         if (key == null) throw new IllegalArgumentException("key不能为空");
-
         first=delete(first,key);
     }
 

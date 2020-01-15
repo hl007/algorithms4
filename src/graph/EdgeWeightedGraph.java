@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class EdgeWeightedGraph {
     private int V;  // 顶点数
     private int E;  // 边数
-    private Bag<Edge>[] adj;  // 邻接表数组，数组元素为边
+    private Bag<Edge>[] adj;  // 邻接表数组
 
     // 创建含有含有V个顶点但不含边的图
     public EdgeWeightedGraph(int V) {

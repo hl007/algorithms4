@@ -79,6 +79,7 @@ public class LinearProbingHashST<Key,Value> implements DisorderedSymbolTable<Key
             vals[i]=null;
             n--;
             put(nextKey,nextVal);
+            i=(i+1)%m;
         }
 
         // 键值对过少，减小数组容量

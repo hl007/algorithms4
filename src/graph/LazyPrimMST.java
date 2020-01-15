@@ -31,7 +31,6 @@ public class LazyPrimMST {
             if (marked[v] && marked[w]) continue;  // 延迟（不删除），两个点已经在树中
             else {
                 mst.enqueue(e);  // 找到一条边
-                assert !marked[v];
                 weight += e.weight();
                 if (!marked[v]) scan(g,v);  // 进行一次新的切分
                 if (!marked[w]) scan(g,w);
