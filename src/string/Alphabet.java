@@ -1,6 +1,5 @@
 package string;
 
-
 // 字母表
 public class Alphabet {
     private char[] alphabet;  // 字母表
@@ -81,11 +80,13 @@ public class Alphabet {
     }
 
     public static void main(String[] args) {
-//        Alphabet a=new Alphabet("abcd");
-//        System.out.println(a.toIndices("cd")[0]);
-//        System.out.println(a.toIndices("cd")[1]);
-        int[] a=new int[]{4,6,7};
-        int i=0;
-        System.out.print(a[++i]);
+        Alphabet a=new Alphabet("abcd");
+        System.out.println(a.toIndices("cd")[0]);
+        System.out.println(a.toIndices("cd")[1]);
+//        int[] a=new int[]{4,6,7};
+//        int i=0;
+//        System.out.print(a[++i]);
+
+        System.out.println('a'+1);
     }
 }
