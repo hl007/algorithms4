@@ -5,7 +5,6 @@ public class TST<Value> {
     private Node root;
     private int n;
 
-
     private static class Node {
         char c;
         Node left,mid,right;
@@ -72,19 +71,35 @@ public class TST<Value> {
 
     }
 
-    public static void main(String[] args) {
-        TST<String> tst=new TST<>();
-        tst.put("by","4");
-        tst.put("sea","6");
-        tst.put("sells","1");
-        tst.put("she","0");
-        tst.put("shells","3");
-        tst.put("shore","7");
-        tst.put("the","5");
+    // 获取某字符串最长的前缀
+    public String longestPrefixOf(String s) {
+        int length=search(root,s,0,0);
+        return s.substring(0,length);
+    }
 
-        System.out.println(tst.size());
-        System.out.println(tst.get("by"));
-        System.out.println(tst.get("shells"));
+    private static int search(Node x,String s,int d,int length) {
+        if(x==null) return length;
+        if(d==s.length()) return length;  // 到达字符串尾部
+
+        char c=s.charAt(d);
+        if(x.val!=null && x.c==c) length=d+1;
+
+        if(c<x.c) return search(x.left,s,d,length);
+        else if(c>x.c) return search(x.right,s,d,length);
+        else return search(x.mid,s,d+1,length);
+    }
+
+    public static void main(String[] args) {
+//        TST<Integer> tst=new TST<>();
+//        for(int i=0;i<256;i++) {
+//            tst.put(""+(char)i,i);
+//        }
+//        tst.put("AB",2);
+//        tst.put("BR",4);
+//        tst.put("RA",5);
+//        tst.put("R",5);
+//
+//        System.out.println(tst.longestPrefixOf("ABSFFFGG"));
     }
 
 }

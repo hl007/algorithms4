@@ -157,9 +157,9 @@ public class TrieST<Value> {
         st.put("shore","7");
         st.put("the","5");
 
-        System.out.println(st.keysWithPrefix("sh"));
-        System.out.println(st.keysThatMatch("s.."));
-        System.out.println(st.longestPrefixOf("sheseal"));
+//        System.out.println(st.keysWithPrefix("sh"));
+//        System.out.println(st.keysThatMatch("s.."));
+//        System.out.println(st.longestPrefixOf("sheseal"));
 
     }
 
