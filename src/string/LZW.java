@@ -17,7 +17,7 @@ public class LZW {
             st.put(""+(char)i,i);
         }
 
-        int code=R+1;  // 终止标记
+        int code=R+1;
 
         while(s.length()>0) {
             String prefix=st.longestPrefixOf(s);  // 获取该字符串在符号表中的最长前缀
@@ -33,9 +33,41 @@ public class LZW {
         BinaryStdOut.close();
     }
 
+    // 解压
+    public static void expand() {
+        String[] st=new String[L];  // 构建一个逆编译表，key为编码，value为字符串
+        int i;
+        for(i=0;i<R;i++) {  // 初始化
+            st[i]=""+(char)i;
+        }
+        st[i++]="";  // i=256，结束标记，不会使用
+
+        int codeword = BinaryStdIn.readInt(W);  // 读取第一个编码
+        String previous=st[codeword];  // 获取字符串
+        while(true) {
+            BinaryStdOut.write(previous);
+            codeword=BinaryStdIn.readInt(W);  // 再读取一个编码
+            if(codeword==R) break;  // 遇到终止标记终止
+
+            String current=st[codeword];  // 获取正在读取的字符串
+            if(codeword==i)  current=previous+previous.charAt(0);  // 特殊情况：读取的编码和需要完成的编码相同
+            if(i<L) {
+                st[i++] = previous + current.charAt(0);  // 插入新的编码
+            }
+            previous=current;
+        }
+
+    }
+
     public static void main(String[] args) {
         if(args[0].equals("-")) {
             compress();
+        }
+        else if(args[0].equals("+")) {
+            expand();
+        }
+        else {
+            throw new IllegalArgumentException("参数错误");
         }
     }
 }
